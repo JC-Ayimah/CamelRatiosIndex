@@ -1,0 +1,158 @@
+---
+title: "Introduction to CamelRatiosIndex"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to CamelRatiosIndex}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5
+)
+```
+
+## Overview
+
+The **CamelRatiosIndex** package implements the multivariate-weighted indexing method proposed by Ayimah et al. (2023a, 2023b) for bank performance assessment using the CAMEL framework. The package provides:
+
+- **`camel_index()`**: Computes composite year-on-year indices from CAMEL ratio data
+- **`plot_camel_index()`**: Visualizes percentage differences across banks using ggplot2
+- **Built-in data**: Example datasets from Ghanaian commercial banks (2015-2022)
+
+## The CAMEL Framework
+
+CAMEL is an internationally recognized framework for evaluating bank performance, comprising five dimensions:
+
+| Dimension | Ratio | Direction |
+|-----------|-------|-----------|
+| **C**apital Adequacy | Ca | Higher = better |
+| **A**sset Quality | Aq | Higher = worse (inverted) |
+| **M**anagement Efficiency | Me | Higher = worse (inverted) |
+| **E**arnings | Eq | Higher = better |
+| **L**iquidity | Lm | Higher = worse (inverted) |
+
+## Installation
+
+```r
+# Install from GitHub (development version)
+# install.packages("remotes")
+remotes::install_github("YOUR-USERNAME/CamelRatiosIndex")
+```
+
+## Quick Start
+
+### Computing the CAMEL Index
+
+```{r}
+library(CamelRatiosIndex)
+
+# Load built-in example data
+data("camel_2015")
+data("camel_2022")
+
+# Compute the index
+result <- camel_index(camel_2015, camel_2022)
+
+# View the main output
+result$index_table
+```
+
+### Accessing Detailed Results
+
+```{r}
+# Laspeyres-type indices (base year weights)
+result$mw_lasp
+
+# Paasche-type indices (current year weights)
+result$mw_pash
+
+# Communality weights from base year factor analysis
+result$weights_base
+
+# Eigenvalues
+result$eigenvalues_base
+```
+
+### Visualizing Results
+
+```{r}
+# Basic plot
+plot_camel_index(result)
+
+# Highlight specific banks
+plot_camel_index(result, highlight_banks = c("Absa", "Ecobank", "GCB"))
+
+# Custom styling
+plot_camel_index(
+  result,
+  title = "Ghanaian Banks: 2015 vs 2022",
+  subtitle = "CAMEL Index Performance",
+  theme_fn = ggplot2::theme_bw
+)
+```
+
+## Data Format
+
+### Data Frame Input
+
+When using data frames, the first column must be the bank identifier, followed by the five CAMEL ratios:
+
+```{r}
+# Example structure
+head(camel_2015)
+```
+
+### Matrix Input
+
+For matrices, supply bank names separately:
+
+```{r}
+base_mat <- as.matrix(camel_2015[, -1])
+curr_mat <- as.matrix(camel_2022[, -1])
+banks <- camel_2015$Bank
+
+result2 <- camel_index(base_mat, curr_mat, bank_names = banks)
+```
+
+## Understanding the Output
+
+The `camel_index()` function returns a rich object with multiple components:
+
+```{r}
+# Print overview
+print(result)
+
+# Detailed summary
+summary(result)
+```
+
+### Key Metrics
+
+- **I_mw**: Composite index (base = 100). Values > 100 indicate improvement; < 100 indicate decline.
+- **PD**: Percentage difference from base year. Positive = improvement.
+- **mw_lasp**: Laspeyres-type index using base year communality weights.
+- **mw_pash**: Paasche-type index using current year communality weights.
+- **weights_base/current**: Communality values from robust factor analysis, representing the proportion of variance explained by each CAMEL ratio.
+
+## Methodology
+
+The index computation follows these steps:
+
+1. **Transform ratios**: Invert Aq, Me, and Lm so that higher values always indicate better performance.
+2. **Compute correlations**: Build correlation matrices for base and current years.
+3. **Extract eigenvalues**: Determine the number of factors (eigenvalues > 1).
+4. **Robust factor analysis**: Use [robustfa::FaCov()] with OGK covariance estimation.
+5. **Extract communalities**: Use communalities as weights for each CAMEL ratio.
+6. **Compute indices**: Calculate Laspeyres and Paasche indices, then average them.
+7. **Scale to base 100**: Final composite index with percentage difference.
+
+## References
+
+Ayimah, J. C., Mettle, F. O., Nortey, E. N., & Minkah, R. (2023a). A Robust Multivariate Weighting Technique for Computing a Measure for Inflation. *African Journal of Technical Education and Management*, 3(1), 1-15.
+
+Ayimah, J.C. (2023b). Computing Multivariate-Weighted Consumer Price Index: An Application Manual in R. B P International. DOI: 10.9734/bpi/mono/978-81-19315-32-1

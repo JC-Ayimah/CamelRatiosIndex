@@ -1,0 +1,31 @@
+url: https://YOUR-USERNAME.github.io/CamelRatiosIndex/
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+  components:
+    github:
+      icon: fa-github
+      href: https://github.com/YOUR-USERNAME/CamelRatiosIndex
+      aria-label: GitHub
+
+reference:
+  - title: "Core Functions"
+    desc: "Main package functions for CAMEL index computation"
+    contents:
+      - camel_index
+      - plot_camel_index
+  - title: "S3 Methods"
+    desc: "Methods for camel_index objects"
+    contents:
+      - print.camel_index
+      - summary.camel_index
+      - autoplot.camel_index
+  - title: "Datasets"
+    desc: "Example data from Ghanaian banks"
+    contents:
+      - camel_2015
+      - camel_2022
