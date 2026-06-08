@@ -18,9 +18,10 @@ Invisibly returns \code{x}.
 Print Method for camel_index Objects
 }
 \examples{
-data("camel_2015")
-data("camel_2022")
-result <- camel_index(camel_2015, camel_2022)
+base_year <- camel_2015
+current_year <- camel_2022
+
+result <- camel_index(base_year, current_year)
 result
 
 }

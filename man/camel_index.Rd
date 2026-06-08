@@ -103,7 +103,6 @@ values of these ratios indicate worse bank performance.
 
 \examples{
 # Using the built-in example data
-library(CamelRatiosIndex)
 base_year <- camel_2015
 current_year <- camel_2022
 

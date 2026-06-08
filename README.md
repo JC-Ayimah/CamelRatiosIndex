@@ -1,19 +1,7 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-
-# CamelRatiosIndex <a href="https://YOUR-USERNAME.github.io/CamelRatiosIndex/"><img src="man/figures/logo.png" align="right" height="139" alt="CamelRatiosIndex website" /></a>
+# CamelRatiosIndex
 
 <!-- badges: start -->
 
@@ -21,15 +9,21 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-**CamelRatiosIndex** implements the multivariate-weighted indexing method for bank performance assessment using the CAMEL framework. The package computes composite year-on-year indices that enable:
+**CamelRatiosIndex** implements the multivariate-weighted indexing
+method for bank performance assessment using the CAMEL framework. The
+package computes composite year-on-year indices that enable:
 
 - Comparison across multiple banks
 - Assessment of bank health relative to a base year
 - Evaluation of the overall banking industry health
 
-Based on the methodology proposed by Ayimah et al. (2023a, 2023b).
-\newline
-This composite index is intended to offer regulators and policymakers a standardised, objective for monitoring bank performance over time and across institutions. Its ability to benchmark banks against a common base year enhances early-warning capabilities, enabling supervisory authorities to identify emerging weaknesses individual banks as well as systemic vulnerabilities within the industry.
+Based on the methodology proposed by Ayimah et al. (2023a, 2023b). This
+composite index offers regulators and policymakers a standardised,
+objective for monitoring bank performance over time and across
+institutions. Its ability to benchmark banks against a common base year
+enhances early-warning capabilities, enabling supervisory authorities to
+identify emerging weaknesses individual banks as well as systemic
+vulnerabilities within the industry.
 
 ## Installation
 
@@ -69,9 +63,12 @@ plot_camel_index(result, highlight_banks = c("Absa", "Ecobank", "GCB"))
 
 - **Tidyverse-native**: Built on dplyr, ggplot2, and tibble
 - **Flexible input**: Accepts data frames or matrices with bank names
-- **Robust statistics**: Uses OGK robust covariance estimation via `robustfa`
-- **Rich output**: Returns index table, weights, eigenvalues, and factor analysis objects
-- **Publication-ready plots**: ggplot2-based visualization with customizable themes
+- **Robust statistics**: Uses OGK robust covariance estimation via
+  `robustfa`
+- **Rich output**: Returns index table, weights, eigenvalues, and factor
+  analysis objects
+- **Publication-ready plots**: ggplot2-based visualization with
+  customizable themes
 - **Built-in data**: Example datasets from 21 Ghanaian commercial banks
 
 ## The CAMEL Framework
@@ -96,14 +93,19 @@ plot_camel_index(result, highlight_banks = c("Absa", "Ecobank", "GCB"))
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md)
+for guidelines.
 
 ## License
 
-This package is released under the MIT License. See `LICENSE.md` for details.
+This package is released under the MIT License. See `LICENSE.md` for
+details.
 
 ## References
 
-Ayimah, J. C., et al. (2023a). A Robust Multivariate Weighting Technique for Computing a Measure for Inflation. *African Journal of Technical Education and Management*, 3(1), 1-15.
+Ayimah, J. C., et al. (2023a). A Robust Multivariate Weighting Technique
+for Computing a Measure for Inflation. *African Journal of Technical
+Education and Management*, 3(1), 1-15.
 
-Ayimah, J.C. (2023b). Computing Multivariate-Weighted Consumer Price Index: An Application Manual in R. B P International.
+Ayimah, J.C. (2023b). Computing Multivariate-Weighted Consumer Price
+Index: An Application Manual in R. B P International.

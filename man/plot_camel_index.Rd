@@ -19,20 +19,23 @@ plot_camel_index(
   ...
 )
 
-autoplot.camel_index(object, ...)
+\method{autoplot}{camel_index}(object, ...)
 }
 \arguments{
 \item{x}{An object of class \code{"camel_index"} returned by \code{\link[=camel_index]{camel_index()}}.}
 
 \item{highlight_banks}{Optional character vector of bank names to highlight
-with distinct colors. All other banks are shown in grey.}
+with distinct colours. All other banks are shown in grey.}
 
 \item{add_reference_line}{Logical indicating whether to add a horizontal
 reference line at PD = 0 (the base year level). Default is \code{TRUE}.}
 
 \item{point_size}{Numeric, size of points. Default is \code{3}.}
 
-\item{line_size}{Numeric, size of line segments. Default is \code{1}.}
+\item{line_size}{Numeric, size of line segments. Default is \code{0.8}.}
+
+\item{colour_palette}{Character vector of colours for highlighted banks.
+Default uses a ColorBrewer qualitative palette.}
 
 \item{title}{Optional plot title. If \code{NULL} (default), a descriptive title
 is generated.}
@@ -47,8 +50,7 @@ describing the base year is generated.}
 \item{...}{Additional arguments passed to \code{\link[ggplot2:geom_line]{ggplot2::geom_line()}} and
 \code{\link[ggplot2:geom_point]{ggplot2::geom_point()}}.}
 
-\item{color_palette}{Character vector of colors for highlighted banks.
-Default uses a ColorBrewer qualitative palette.}
+\item{object}{An object of class \code{"camel_index"} (for the \code{autoplot} generic).}
 }
 \value{
 A ggplot object.
@@ -60,7 +62,6 @@ across the CAMEL framework.
 }
 \examples{
 # Basic plot
-library()
 result <- camel_index(camel_2015, camel_2022)
 plot_camel_index(result)
 

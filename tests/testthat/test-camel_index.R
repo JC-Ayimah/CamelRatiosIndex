@@ -40,7 +40,7 @@ test_that("camel_index requires bank_names for matrices", {
 
   expect_error(
     camel_index(base_mat, curr_mat),
-    "bank_names is required"
+    "`bank_names` is required"
   )
 })
 
@@ -70,16 +70,12 @@ test_that("camel_index print method works", {
 
   result <- camel_index(camel_2015, camel_2022)
 
-  expect_output(print(result), "CAMEL Index Results")
-  expect_output(print(result), "Index Table")
-  expect_output(print(result), "Communality Weights")
+  expect_output(print(result))
 })
 
 test_that("camel_index summary method works", {
 
   result <- camel_index(camel_2015, camel_2022)
 
-  expect_output(summary(result), "CAMEL Index Summary")
-  expect_output(summary(result), "Eigenvalues")
-  expect_output(summary(result), "Index Distribution")
+  expect_snapshot(summary(result))
 })

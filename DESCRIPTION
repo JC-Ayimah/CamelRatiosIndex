@@ -2,9 +2,9 @@ Package: CamelRatiosIndex
 Title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
 Version: 0.1.0
 Authors@R: c(
-    person("John Coker", "Ayimah", , "jcayimah@example.com", role = c("aut", "cre")),
+    person("John Coker", "Ayimah", , "jcayimah@htu.edu.gh", role = c("aut", "cre")),
     person("George Kyei", "Agyen", , "gkagyen@live.com", role = "aut"),
-    person("Raymond", "Achiyaale", , "rachiyaale@example.com", role = "aut")
+    person("Raymond", "Achiyaale", , "rachiyaale@htu.edu.gh", role = "aut")
   )
 Description: Computes a composite year-on-year index for bank performance
     assessment using the CAMEL framework (Capital Adequacy, Asset Quality,
@@ -14,20 +14,18 @@ Description: Computes a composite year-on-year index for bank performance
     matrix of CAMEL ratios.  Provides functions for index computation,
     visualization, and comparison across banks and time periods.
 License: MIT + file LICENSE
-URL: https://github.com/YOUR-USERNAME/CamelRatiosIndex
-BugReports: https://github.com/YOUR-USERNAME/CamelRatiosIndex/issues
+URL: https://github.com/JC-Ayimah/CamelRatiosIndex
+BugReports: https://github.com/JC-Ayimah/CamelRatiosIndex/issues
 Depends: 
     R (>= 3.5)
 Imports:
     cli (>= 3.6.0),
     dplyr (>= 1.1.0),
     ggplot2 (>= 3.4.0),
-    rlang (>= 1.1.0),
     robustfa,
     rrcov,
     stats,
     tibble (>= 3.2.0),
-    tidyr (>= 1.3.0),
     utils
 Suggests: 
     knitr,

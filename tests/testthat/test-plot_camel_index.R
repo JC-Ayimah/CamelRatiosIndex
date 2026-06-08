@@ -1,6 +1,4 @@
 test_that("plot_camel_index returns a ggplot object", {
-  data("camel_2015")
-  data("camel_2022")
 
   result <- camel_index(camel_2015, camel_2022)
   p <- plot_camel_index(result)
@@ -9,8 +7,6 @@ test_that("plot_camel_index returns a ggplot object", {
 })
 
 test_that("plot_camel_index highlights specific banks", {
-  data("camel_2015")
-  data("camel_2022")
 
   result <- camel_index(camel_2015, camel_2022)
   p <- plot_camel_index(result, highlight_banks = c("Absa", "Ecobank"))
@@ -19,8 +15,6 @@ test_that("plot_camel_index highlights specific banks", {
 })
 
 test_that("plot_camel_index warns on missing highlight banks", {
-  data("camel_2015")
-  data("camel_2022")
 
   result <- camel_index(camel_2015, camel_2022)
 
@@ -38,8 +32,6 @@ test_that("plot_camel_index errors on non-camel_index input", {
 })
 
 test_that("plot_camel_index respects custom theme", {
-  data("camel_2015")
-  data("camel_2022")
 
   result <- camel_index(camel_2015, camel_2022)
   p <- plot_camel_index(result, theme_fn = ggplot2::theme_bw)
@@ -48,11 +40,9 @@ test_that("plot_camel_index respects custom theme", {
 })
 
 test_that("autoplot.camel_index works", {
-  data("camel_2015")
-  data("camel_2022")
 
   result <- camel_index(camel_2015, camel_2022)
-  p <- autoplot(result)
+  p <- ggplot2::autoplot(result)
 
   expect_s3_class(p, "ggplot")
 })

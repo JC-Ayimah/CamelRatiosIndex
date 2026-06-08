@@ -28,4 +28,10 @@ reference:
     desc: "Example data from Ghanaian banks"
     contents:
       - camel_2015
+      - camel_2016
+      - camel_2017
+      - camel_2018
+      - camel_2019
+      - camel_2020
+      - camel_2021
       - camel_2022

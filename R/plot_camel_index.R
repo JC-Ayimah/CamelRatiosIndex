@@ -4,9 +4,10 @@
 #' base year for each bank, enabling visual comparison of bank performance
 #' across the CAMEL framework.
 #'
-#' @param x An object of class `"camel_index"` returned by [camel_index()].
+#' @param x An object of class \code{"camel_index"} returned by [camel_index()].
+#' @param object An object of class \code{"camel_index"} (for the \code{autoplot} generic).
 #' @param highlight_banks Optional character vector of bank names to highlight
-#'   with distinct colors. All other banks are shown in grey.
+#'   with distinct colours. All other banks are shown in grey.
 #' @param add_reference_line Logical indicating whether to add a horizontal
 #'   reference line at PD = 0 (the base year level). Default is `TRUE`.
 #' @param point_size Numeric, size of points. Default is `3`.
@@ -25,8 +26,6 @@
 #' @returns A ggplot object.
 #'
 #' @examples
-#' library(CamelRatiosIndex)
-#'
 #' # Basic plot
 #' result <- camel_index(camel_2015, camel_2022)
 #' plot_camel_index(result)

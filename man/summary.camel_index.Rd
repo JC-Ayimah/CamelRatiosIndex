@@ -19,8 +19,6 @@ Provides a detailed summary of the CAMEL index computation, including
 eigenvalues, factor loadings, and weight attribution.
 }
 \examples{
-data("camel_2015")
-data("camel_2022")
 result <- camel_index(camel_2015, camel_2022)
 summary(result)
 

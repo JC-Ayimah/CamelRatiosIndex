@@ -9,8 +9,6 @@
 #' @returns Invisibly returns `object`.
 #'
 #' @examples
-#' data("camel_2015")
-#' data("camel_2022")
 #' result <- camel_index(camel_2015, camel_2022)
 #' summary(result)
 #'

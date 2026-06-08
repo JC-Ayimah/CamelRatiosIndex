@@ -8,11 +8,11 @@
 A data frame with 21 rows and 6 columns:
 \describe{
 \item{Bank}{Bank name (character)}
-\item{Ca1}{Capital Adequacy ratio}
-\item{Aq1}{Asset Quality ratio}
-\item{Me1}{Management Efficiency ratio}
-\item{Eq1}{Earnings ratio}
-\item{Lm1}{Liquidity ratio}
+\item{Ca2}{Capital Adequacy ratio}
+\item{Aq2}{Asset Quality ratio}
+\item{Me2}{Management Efficiency ratio}
+\item{Eq2}{Earnings ratio}
+\item{Lm2}{Liquidity ratio}
 }
 }
 \source{

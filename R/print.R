@@ -6,9 +6,10 @@
 #' @returns Invisibly returns `x`.
 #'
 #' @examples
-#' data("camel_2015")
-#' data("camel_2022")
-#' result <- camel_index(camel_2015, camel_2022)
+#' base_year <- camel_2015
+#' current_year <- camel_2022
+#'
+#' result <- camel_index(base_year, current_year)
 #' result
 #'
 #' @export
@@ -37,6 +38,6 @@ print.camel_index <- function(x, ...) {
   cli::cli_text("Best performing bank: {x$bank_names[which.max(x$PD)]} (PD = {max(x$PD)}%)")
   cli::cli_text("Worst performing bank: {x$bank_names[which.min(x$PD)]} (PD = {min(x$PD)}%)")
   cat("\n")
-  
+
   invisible(x)
 }
