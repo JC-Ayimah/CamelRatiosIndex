@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CamelRatiosIndex
+# CamelRatiosIndex <a href="https://YOUR-USERNAME.github.io/CamelRatiosIndex/"><img src="man/figures/logo.png" align="right" height="139" alt="CamelRatiosIndex website" /></a>
 
 <!-- badges: start -->
 
@@ -18,12 +18,12 @@ package computes composite year-on-year indices that enable:
 - Evaluation of the overall banking industry health
 
 Based on the methodology proposed by Ayimah et al. (2023a, 2023b). This
-composite index offers regulators and policymakers a standardised,
-objective for monitoring bank performance over time and across
-institutions. Its ability to benchmark banks against a common base year
-enhances early-warning capabilities, enabling supervisory authorities to
-identify emerging weaknesses individual banks as well as systemic
-vulnerabilities within the industry.
+composite index is intended to offer regulators and policymakers a
+standardised, objective for monitoring bank performance over time and
+across institutions. Its ability to benchmark banks against a common
+base year enhances early-warning capabilities, enabling supervisory
+authorities to identify emerging weaknesses individual banks as well as
+systemic vulnerabilities within the industry.
 
 ## Installation
 

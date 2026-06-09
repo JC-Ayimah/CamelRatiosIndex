@@ -152,7 +152,7 @@ plot_camel_index <- function(x,
   p
 }
 
-
+#' @importFrom ggplot2 autoplot
 #' @rdname plot_camel_index
 #' @export
 autoplot.camel_index <- function(object, ...) {

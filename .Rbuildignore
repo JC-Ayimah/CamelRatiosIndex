@@ -30,3 +30,4 @@
 ^appveyor\.yml$
 ^\.circleci$
 ^\.gitlab-ci\.yml$
+^CONTRIBUTING\.md$

@@ -11,8 +11,8 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.width = 7,
-  fig.height = 5
+  fig.width = 9,
+  fig.height = 6
 )
 ```
 
@@ -23,6 +23,8 @@ The **CamelRatiosIndex** package implements the multivariate-weighted indexing m
 - **`camel_index()`**: Computes composite year-on-year indices from CAMEL ratio data
 - **`plot_camel_index()`**: Visualizes percentage differences across banks using ggplot2
 - **Built-in data**: Example datasets from Ghanaian commercial banks (2015-2022)
+
+This composite index is intended to offer regulators and policymakers a standardised, objective for monitoring bank performance over time and across institutions. Its ability to benchmark banks against a common base year enhances early-warning capabilities, enabling supervisory authorities to identify emerging weaknesses individual banks as well as systemic vulnerabilities within the industry.
 
 ## The CAMEL Framework
 
