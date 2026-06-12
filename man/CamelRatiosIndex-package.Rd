@@ -19,13 +19,13 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: John Coker Ayimah \email{jcayimah@htu.edu.gh}
+\strong{Maintainer}: John Coker Ayimah \email{jcayimah@htu.edu.gh} [copyright holder]
 
 Authors:
 \itemize{
-  \item John Coker Ayimah \email{jcayimah@htu.edu.gh}
-  \item George Kyei Agyen \email{gkagyen@live.com}
-  \item Raymond Achiyaale \email{rachiyaale@htu.edu.gh}
+  \item John Coker Ayimah \email{jcayimah@htu.edu.gh} [copyright holder]
+  \item George Kyei Agyen \email{gkagyen@live.com} [copyright holder]
+  \item Raymond Achiyaale \email{rachiyaale@htu.edu.gh} [copyright holder]
 }
 
 }
