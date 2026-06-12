@@ -8,22 +8,23 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Computes a composite year-on-year index for bank performance assessment using the CAMEL framework (Capital Adequacy, Asset Quality, Management Efficiency, Earnings, Liquidity). The multivariate weighting scheme employs factor analysis with robust covariance estimation to derive communality-based weights from the correlation matrix of CAMEL ratios. Provides functions for index computation, visualization, and comparison across banks and time periods.
+Computes a composite year-on-year index for bank performance assessment using the CAMEL framework (Capital Adequacy, Asset Quality, Management Efficiency, Earnings, Liquidity). The multivariate weighting scheme employs factor analysis with robust covariance estimation to derive communality-based weights from the correlation matrix of CAMEL ratios. Provides functions for index computation, visualization, and comparison across banks and time periods.The methodology is described in Ayimah et al. (2023a) \doi{10.9734/bpi/mono/978-81-19315-32-1} and Ayimah et al. (2023b) \url{https://ajtem.com/index.php/ajtem/article/view/53}.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/JC-Ayimah/CamelRatiosIndex}
+  \item \url{https://JC-Ayimah.github.io/CamelRatiosIndex/}
   \item Report bugs at \url{https://github.com/JC-Ayimah/CamelRatiosIndex/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: John Coker Ayimah \email{jcayimah@htu.edu.gh} [copyright holder]
+\strong{Maintainer}: John Coker Ayimah \email{jayimah@htu.edu.gh} [copyright holder]
 
 Authors:
 \itemize{
-  \item John Coker Ayimah \email{jcayimah@htu.edu.gh} [copyright holder]
+  \item John Coker Ayimah \email{jayimah@htu.edu.gh} [copyright holder]
   \item George Kyei Agyen \email{gkagyen@live.com} [copyright holder]
   \item Raymond Achiyaale \email{rachiyaale@htu.edu.gh} [copyright holder]
 }

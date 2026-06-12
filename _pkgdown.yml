@@ -1,7 +1,4 @@
 url: https://JC-Ayimah.github.io/CamelRatiosIndex/
-home:
-  title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
-
 template:
   bootstrap: 5
 
@@ -38,4 +35,9 @@ reference:
       - camel_2020
       - camel_2021
       - camel_2022
-      
+
+home:
+  title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
+  description: Computes a composite year-on-year index for bank performance
+    assessment using the CAMEL framework.
+
