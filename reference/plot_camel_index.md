@@ -30,7 +30,7 @@ autoplot(object, ...)
 - x:
 
   An object of class `"camel_index"` returned by
-  [`camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/camel_index.md).
+  [`camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/camel_index.md).
 
 - highlight_banks:
 

@@ -6,9 +6,9 @@ The **CamelRatiosIndex** package implements the multivariate-weighted
 indexing method proposed by Ayimah et al. (2023a, 2023b) for bank
 performance assessment using the CAMEL framework. The package provides:
 
-- **[`camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/camel_index.md)**:
+- **[`camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/camel_index.md)**:
   Computes composite year-on-year indices from CAMEL ratio data
-- **[`plot_camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/plot_camel_index.md)**:
+- **[`plot_camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/plot_camel_index.md)**:
   Visualizes percentage differences across banks using ggplot2
 - **Built-in data**: Example datasets from Ghanaian commercial banks
   (2015-2022)
@@ -176,7 +176,7 @@ result2 <- camel_index(base_mat, curr_mat, bank_names = banks)
 ## Understanding the Output
 
 The
-[`camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/camel_index.md)
+[`camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/camel_index.md)
 function returns a rich object with multiple components:
 
 ``` r

@@ -2,11 +2,11 @@
 
 ## Authors
 
-- **John Coker Ayimah**. Author, maintainer.
+- **John Coker Ayimah**. Author, copyright holder, maintainer.
 
-- **George Kyei Agyen**. Author.
+- **George Kyei Agyen**. Author, copyright holder.
 
-- **Raymond Achiyaale**. Author.
+- **Raymond Achiyaale**. Author, copyright holder.
 
 ## Citation
 

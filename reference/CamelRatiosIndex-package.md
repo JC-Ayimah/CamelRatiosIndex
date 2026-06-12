@@ -18,12 +18,13 @@ Useful links:
 
 ## Author
 
-**Maintainer**: John Coker Ayimah <jcayimah@htu.edu.gh>
+**Maintainer**: John Coker Ayimah <jcayimah@htu.edu.gh> \[copyright
+holder\]
 
 Authors:
 
-- John Coker Ayimah <jcayimah@htu.edu.gh>
+- John Coker Ayimah <jcayimah@htu.edu.gh> \[copyright holder\]
 
-- George Kyei Agyen <gkagyen@live.com>
+- George Kyei Agyen <gkagyen@live.com> \[copyright holder\]
 
-- Raymond Achiyaale <rachiyaale@htu.edu.gh>
+- Raymond Achiyaale <rachiyaale@htu.edu.gh> \[copyright holder\]

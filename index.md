@@ -20,9 +20,18 @@ systemic vulnerabilities within the industry.
 
 ## Installation
 
+You can install the the package with:
+
 ``` r
 
-# Install from GitHub (development version)
+install.packages("CamelRatiosIndex")
+```
+
+And the development version from
+[Github](https://github.com/JC-Ayimah/CamelRatiosIndex) using:
+
+``` r
+
 # install.packages("remotes")
 remotes::install_github("JC-Ayimah/CamelRatiosIndex")
 ```
@@ -80,16 +89,16 @@ plot_camel_index(result, highlight_banks = c("Absa", "Ecobank", "GCB"))
 
 | Function | Description |
 |----|----|
-| [`camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/camel_index.md) | Compute composite CAMEL index |
-| [`plot_camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/plot_camel_index.md) | Plot percentage differences across banks |
-| [`print.camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/print.camel_index.md) | Print method for index results |
-| [`summary.camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/summary.camel_index.md) | Detailed summary of factor analysis |
-| [`autoplot.camel_index()`](https://YOUR-USERNAME.github.io/CamelRatiosIndex/reference/plot_camel_index.md) | ggplot2 autoplot method |
+| [`camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/camel_index.md) | Compute composite CAMEL index |
+| [`plot_camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/plot_camel_index.md) | Plot percentage differences across banks |
+| [`print.camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/print.camel_index.md) | Print method for index results |
+| [`summary.camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/summary.camel_index.md) | Detailed summary of factor analysis |
+| [`autoplot.camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/plot_camel_index.md) | ggplot2 autoplot method |
 
 ## Contributing
 
 Contributions are welcome! Please see
-[CONTRIBUTING.md](https://YOUR-USERNAME.github.io/CamelRatiosIndex/CONTRIBUTING.md)
+[CONTRIBUTING.md](https://JC-Ayimah.github.io/CamelRatiosIndex/CONTRIBUTING.md)
 for guidelines.
 
 ## License
