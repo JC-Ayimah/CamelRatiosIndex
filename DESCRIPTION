@@ -2,9 +2,9 @@ Package: CamelRatiosIndex
 Title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
 Version: 0.1.0
 Authors@R: c(
-    person("John Coker", "Ayimah", , "jcayimah@htu.edu.gh", role = c("aut", "cre")),
-    person("George Kyei", "Agyen", , "gkagyen@live.com", role = c("aut")),
-    person("Raymond", "Achiyaale", , "rachiyaale@htu.edu.gh", role = "aut")
+    person("John Coker", "Ayimah", , "jcayimah@htu.edu.gh", role = c("aut", "cph", "cre")),
+    person("George Kyei", "Agyen", , "gkagyen@live.com", role = c("aut", "cph")),
+    person("Raymond", "Achiyaale", , "rachiyaale@htu.edu.gh", role = c("aut", "cph"))
   )
 Description: Computes a composite year-on-year index for bank performance
     assessment using the CAMEL framework (Capital Adequacy, Asset Quality,

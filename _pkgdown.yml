@@ -1,4 +1,7 @@
-url: https://YOUR-USERNAME.github.io/CamelRatiosIndex/
+url: https://JC-Ayimah.github.io/CamelRatiosIndex/
+home:
+  title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
+
 template:
   bootstrap: 5
 
@@ -9,7 +12,7 @@ navbar:
   components:
     github:
       icon: fa-github
-      href: https://github.com/YOUR-USERNAME/CamelRatiosIndex
+      href: https://github.com/JC-Ayimah/CamelRatiosIndex
       aria-label: GitHub
 
 reference:
@@ -35,3 +38,4 @@ reference:
       - camel_2020
       - camel_2021
       - camel_2022
+      

@@ -34,8 +34,14 @@ This composite index is intended to offer regulators and policymakers a standard
 
 ## Installation
 
+You can install the the package with:
+
+```r
+install.packages("CamelRatiosIndex")
+```
+And the development version from [Github](https://github.com/JC-Ayimah/CamelRatiosIndex) using:
+
 ``` r
-# Install from GitHub (development version)
 # install.packages("remotes")
 remotes::install_github("JC-Ayimah/CamelRatiosIndex")
 ```

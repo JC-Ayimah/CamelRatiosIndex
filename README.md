@@ -28,8 +28,16 @@ systemic vulnerabilities within the industry.
 
 ## Installation
 
+You can install the the package with:
+
 ``` r
-# Install from GitHub (development version)
+install.packages("CamelRatiosIndex")
+```
+
+And the development version from
+[Github](https://github.com/JC-Ayimah/CamelRatiosIndex) using:
+
+``` r
 # install.packages("remotes")
 remotes::install_github("JC-Ayimah/CamelRatiosIndex")
 ```
