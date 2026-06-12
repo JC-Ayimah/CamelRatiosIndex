@@ -3,7 +3,7 @@ Title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
 Version: 0.1.0
 Authors@R: c(
     person("John Coker", "Ayimah", , "jcayimah@htu.edu.gh", role = c("aut", "cre")),
-    person("George Kyei", "Agyen", , "gkagyen@live.com", role = "aut"),
+    person("George Kyei", "Agyen", , "gkagyen@live.com", role = c("aut")),
     person("Raymond", "Achiyaale", , "rachiyaale@htu.edu.gh", role = "aut")
   )
 Description: Computes a composite year-on-year index for bank performance
