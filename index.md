@@ -110,7 +110,9 @@ details.
 
 Ayimah, J. C., et al. (2023a). A Robust Multivariate Weighting Technique
 for Computing a Measure for Inflation. *African Journal of Technical
-Education and Management*, 3(1), 1-15.
+Education and Management*, 3(1), 1-15. Retrieved from
+<https://ajtem.com/index.php/ajtem/article/view/53>.
 
 Ayimah, J.C. (2023b). Computing Multivariate-Weighted Consumer Price
 Index: An Application Manual in R. B P International.
+<DOI:http://dx.doi.org/10.9734/bpi/mono/978-81-19315-32-1>
