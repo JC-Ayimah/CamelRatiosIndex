@@ -1,4 +1,4 @@
-url: https://jc-ayimah.github.io/CamelRatiosIndex/
+url: https://JC-Ayimah.github.io/CamelRatiosIndex/
 template:
   bootstrap: 5
 navbar:
@@ -14,29 +14,33 @@ navbar:
   components:
     github:
       icon: fa-github
-      href: https://github.com/YOUR-USERNAME/CamelRatiosIndex
+      href: https://github.com/JC-Ayimah/CamelRatiosIndex
       aria-label: GitHub
 reference:
-- title: Core Functions
-  desc: Main package functions for CAMEL index computation
-  contents:
-  - camel_index
-  - plot_camel_index
-- title: S3 Methods
-  desc: Methods for camel_index objects
-  contents:
-  - print.camel_index
-  - summary.camel_index
-  - autoplot.camel_index
-- title: Datasets
-  desc: Example data from Ghanaian banks
-  contents:
-  - camel_2015
-  - camel_2016
-  - camel_2017
-  - camel_2018
-  - camel_2019
-  - camel_2020
-  - camel_2021
-  - camel_2022
+  - title: "Core Functions"
+    desc: "Main package functions for CAMEL index computation"
+    contents:
+      - camel_index
+      - plot_camel_index
+  - title: "S3 Methods"
+    desc: "Methods for camel_index objects"
+    contents:
+      - print.camel_index
+      - summary.camel_index
+      - autoplot.camel_index
+  - title: "Datasets"
+    desc: "Example data from Ghanaian banks"
+    contents:
+      - camel_2015
+      - camel_2016
+      - camel_2017
+      - camel_2018
+      - camel_2019
+      - camel_2020
+      - camel_2021
+      - camel_2022
 
+home:
+  title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
+  description: Computes a composite year-on-year index for bank performance
+    assessment using the CAMEL framework.

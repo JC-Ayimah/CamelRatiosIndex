@@ -13,10 +13,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-# CamelRatiosIndex <a href="https://YOUR-USERNAME.github.io/CamelRatiosIndex/"><img src="man/figures/logo.png" align="right" height="139" alt="CamelRatiosIndex website" /></a>
+# CamelRatiosIndex <a href="https://JC-Ayimah.github.io/CamelRatiosIndex/"><img src="man/figures/logo.png" align="right" height="139" alt="CamelRatiosIndex website" /></a>
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/JC-Ayimah/CamelRatiosIndex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JC-Ayimah/CamelRatiosIndex/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Overview
@@ -33,8 +34,14 @@ This composite index is intended to offer regulators and policymakers a standard
 
 ## Installation
 
+You can install the released version from CRAN with:
+
+```r
+install.packages("CamelRatiosIndex")
+```
+Or the development version from [Github](https://github.com/JC-Ayimah/CamelRatiosIndex) using:
+
 ``` r
-# Install from GitHub (development version)
 # install.packages("remotes")
 remotes::install_github("JC-Ayimah/CamelRatiosIndex")
 ```
@@ -96,7 +103,7 @@ plot_camel_index(result, highlight_banks = c("Absa", "Ecobank", "GCB"))
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Contributions are welcome! Please see [CONTRIBUTING.md](https://github.com/JC-Ayimah/CamelRatiosIndex/blob/master/CONTRIBUTING.md) for guidelines.
 
 ## License
 
@@ -104,6 +111,7 @@ This package is released under the MIT License. See `LICENSE.md` for details.
 
 ## References
 
-Ayimah, J. C., et al. (2023a). A Robust Multivariate Weighting Technique for Computing a Measure for Inflation. *African Journal of Technical Education and Management*, 3(1), 1-15.
+Ayimah, J. C., et al. (2023a). A Robust Multivariate Weighting Technique for Computing a Measure for Inflation. *African Journal of Technical Education and Management*, 3(1), 1-15. Retrieved from	https://ajtem.com/index.php/ajtem/article/view/53. 
 
 Ayimah, J.C. (2023b). Computing Multivariate-Weighted Consumer Price Index: An Application Manual in R. B P International.
+DOI:http://dx.doi.org/10.9734/bpi/mono/978-81-19315-32-1

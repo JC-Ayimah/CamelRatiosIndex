@@ -1,12 +1,7 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
 
-## Test environments
+* This is a new release.
 
-* local: macOS (aarch64), R 4.4.0
-* GitHub Actions: macOS-latest, windows-latest, ubuntu-latest (release, devel, oldrel-1)
-
-## Downstream dependencies
-
-There are no downstream dependencies.
+  This is my first submission to CRAN.

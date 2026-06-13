@@ -1,10 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CamelRatiosIndex <a href="https://YOUR-USERNAME.github.io/CamelRatiosIndex/"><img src="man/figures/logo.png" align="right" height="139" alt="CamelRatiosIndex website" /></a>
+# CamelRatiosIndex <a href="https://JC-Ayimah.github.io/CamelRatiosIndex/"><img src="man/figures/logo.png" align="right" height="139" alt="CamelRatiosIndex website" /></a>
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/JC-Ayimah/CamelRatiosIndex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JC-Ayimah/CamelRatiosIndex/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Overview
@@ -27,8 +28,16 @@ systemic vulnerabilities within the industry.
 
 ## Installation
 
+You can install the released version from CRAN with:
+
 ``` r
-# Install from GitHub (development version)
+install.packages("CamelRatiosIndex")
+```
+
+Or the development version from
+[Github](https://github.com/JC-Ayimah/CamelRatiosIndex) using:
+
+``` r
 # install.packages("remotes")
 remotes::install_github("JC-Ayimah/CamelRatiosIndex")
 ```
@@ -93,7 +102,8 @@ plot_camel_index(result, highlight_banks = c("Absa", "Ecobank", "GCB"))
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md)
+Contributions are welcome! Please see
+[CONTRIBUTING.md](https://github.com/JC-Ayimah/CamelRatiosIndex/blob/master/CONTRIBUTING.md)
 for guidelines.
 
 ## License
@@ -105,7 +115,9 @@ details.
 
 Ayimah, J. C., et al. (2023a). A Robust Multivariate Weighting Technique
 for Computing a Measure for Inflation. *African Journal of Technical
-Education and Management*, 3(1), 1-15.
+Education and Management*, 3(1), 1-15. Retrieved from
+<https://ajtem.com/index.php/ajtem/article/view/53>.
 
 Ayimah, J.C. (2023b). Computing Multivariate-Weighted Consumer Price
 Index: An Application Manual in R. B P International.
+<DOI:http://dx.doi.org/10.9734/bpi/mono/978-81-19315-32-1>

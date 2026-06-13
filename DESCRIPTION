@@ -2,9 +2,9 @@ Package: CamelRatiosIndex
 Title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
 Version: 0.1.0
 Authors@R: c(
-    person("John Coker", "Ayimah", , "jcayimah@htu.edu.gh", role = c("aut", "cre")),
-    person("George Kyei", "Agyen", , "gkagyen@live.com", role = "aut"),
-    person("Raymond", "Achiyaale", , "rachiyaale@htu.edu.gh", role = "aut")
+    person("John Coker", "Ayimah", , "jayimah@htu.edu.gh", role = c("aut", "cph", "cre")),
+    person("George Kyei", "Agyen", , "gkagyen@live.com", role = c("aut", "cph")),
+    person("Raymond", "Achiyaale", , "rachiyaale@htu.edu.gh", role = c("aut", "cph"))
   )
 Description: Computes a composite year-on-year index for bank performance
     assessment using the CAMEL framework (Capital Adequacy, Asset Quality,
@@ -12,9 +12,11 @@ Description: Computes a composite year-on-year index for bank performance
     weighting scheme employs factor analysis with robust covariance
     estimation to derive communality-based weights from the correlation
     matrix of CAMEL ratios.  Provides functions for index computation,
-    visualization, and comparison across banks and time periods.
+    visualization, and comparison across banks and time periods.The methodology is described in Ayimah et al. (2023a)
+    <doi:10.9734/bpi/mono/978-81-19315-32-1> and Ayimah et al. (2023b)
+    <https://ajtem.com/index.php/ajtem/article/view/53>.
 License: MIT + file LICENSE
-URL: https://github.com/JC-Ayimah/CamelRatiosIndex, https://jc-ayimah.github.io/CamelRatiosIndex/
+URL: https://github.com/JC-Ayimah/CamelRatiosIndex, https://JC-Ayimah.github.io/CamelRatiosIndex/
 BugReports: https://github.com/JC-Ayimah/CamelRatiosIndex/issues
 Depends: 
     R (>= 3.5)
