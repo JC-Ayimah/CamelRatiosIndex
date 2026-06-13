@@ -16,6 +16,7 @@ navbar:
       icon: fa-github
       href: https://github.com/JC-Ayimah/CamelRatiosIndex
       aria-label: GitHub
+
 reference:
   - title: "Core Functions"
     desc: "Main package functions for CAMEL index computation"
