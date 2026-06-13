@@ -22,7 +22,6 @@ print.camel_index <- function(x, ...) {
 
   cli::cli_h2("Index Table\n")
   print(x$index_table)
-  cat("\n")
 
   cli::cli_h2("Communality Weights (Base Year)\n")
   weights_df <- tibble::tibble(

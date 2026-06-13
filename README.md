@@ -28,13 +28,13 @@ systemic vulnerabilities within the industry.
 
 ## Installation
 
-You can install the the package with:
+You can install the released version from CRAN with:
 
 ``` r
 install.packages("CamelRatiosIndex")
 ```
 
-And the development version from
+Or the development version from
 [Github](https://github.com/JC-Ayimah/CamelRatiosIndex) using:
 
 ``` r
@@ -102,7 +102,8 @@ plot_camel_index(result, highlight_banks = c("Absa", "Ecobank", "GCB"))
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md)
+Contributions are welcome! Please see
+[CONTRIBUTING.md](https://github.com/JC-Ayimah/CamelRatiosIndex/blob/master/CONTRIBUTING.md)
 for guidelines.
 
 ## License

@@ -74,7 +74,7 @@ plot_camel_index(
   highlight_banks = c("Absa", "Ecobank"),
   title = "Bank Performance: 2015 vs 2022",
   subtitle = "Percentage difference from base year",
-  color_palette = c("#E41A1C", "#377EB8"),
+  colour_palette = c("#E41A1C", "#377EB8"),
   theme_fn = ggplot2::theme_bw
 )
 
