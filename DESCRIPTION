@@ -14,7 +14,7 @@ Description: Computes a composite year-on-year index for bank performance
     matrix of CAMEL ratios.  Provides functions for index computation,
     visualization, and comparison across banks and time periods.
 License: MIT + file LICENSE
-URL: https://github.com/JC-Ayimah/CamelRatiosIndex
+URL: https://github.com/JC-Ayimah/CamelRatiosIndex, https://jc-ayimah.github.io/CamelRatiosIndex/
 BugReports: https://github.com/JC-Ayimah/CamelRatiosIndex/issues
 Depends: 
     R (>= 3.5)
