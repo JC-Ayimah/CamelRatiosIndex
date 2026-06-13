@@ -54,7 +54,6 @@ result
 #>  9 FAB     204.   104.   
 #> 10 FNB     144.    43.7  
 #> # ℹ 11 more rows
-#> 
 #> ── Communality Weights (Base Year) ──
 #> 
 #> # A tibble: 5 × 2
