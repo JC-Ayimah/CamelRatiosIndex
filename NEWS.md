@@ -1,4 +1,4 @@
-# CamelRatiosIndex (development version)
+# CamelRatiosIndex 1.0.0
 
 ## CamelRatiosIndex 0.1.0
 
