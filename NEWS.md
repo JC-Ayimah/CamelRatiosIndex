@@ -9,7 +9,7 @@
 
 # Previous Releases
 
-## CamelRatiosIndex 1.1.0
+## CamelRatiosIndex 1.0.0
 
 * Initial CRAN release.
 * Added `camel_index()` for computing multivariate-weighted CAMEL indices.
