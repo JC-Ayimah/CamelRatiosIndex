@@ -141,6 +141,151 @@ summary(result)
 - **mw_pash**: Paasche-type index using current year communality weights.
 - **weights_base/current**: Communality values from robust factor analysis, representing the proportion of variance explained by each CAMEL ratio.
 
+## Trend Analysis: Year-on-Year Comparison
+
+The package supports trend analysis by computing indices for successive pairs of years. This allows you to track bank performance trajectories over multiple periods and identify emerging patterns that a single comparison might miss.
+
+### Computing Year-on-Year Indices
+
+The package includes built-in datasets for eight years (2015-2022). To build a trend, compute the index for each consecutive year pair, using the earlier year as the base:
+
+```{r}
+# Compute year-on-year indices
+yoy_results <- list(
+  "2015-2016" = camel_index(camel_2015, camel_2016, n_factors = 2),
+  "2016-2017" = camel_index(camel_2016, camel_2017, n_factors = 2),
+  "2017-2018" = camel_index(camel_2017, camel_2018, n_factors = 2),
+  "2018-2019" = camel_index(camel_2018, camel_2019, n_factors = 2),
+  "2019-2020" = camel_index(camel_2019, camel_2020, n_factors = 2),
+  "2020-2021" = camel_index(camel_2020, camel_2021),
+  "2021-2022" = camel_index(camel_2021, camel_2022, n_factors = 2)
+)
+```
+
+### Extracting Trend Data
+
+Extract the index values for each bank across all periods:
+
+```{r}
+library(dplyr)
+library(purrr)
+
+# Build a trend table: one row per bank, one column per year-pair
+trend_data <- yoy_results |>
+  imap(\(data, period) {
+    data$index_table |>
+      select(bank, !!period := I_mw)
+  }) |>
+  reduce(full_join, by = "bank")
+
+# View the trend table
+trend_data
+```
+
+### Visualizing Trends
+
+Plot the trajectory of a specific bank over time:
+
+```{r}
+library(ggplot2)
+library(tidyr)
+
+# Reshape for ggplot2
+trend_long <- trend_data |>
+  pivot_longer(
+    cols = -bank,
+    names_to = "period",
+    values_to = "I_mw"
+  ) |>
+  mutate(
+    end_year = as.numeric(gsub(".*-", "", period))
+  )
+
+# Plot trends for selected banks
+selected_banks <- c("Absa", "Ecobank", "GCB", "ADB")
+
+trend_long |>
+  filter(bank %in% selected_banks) |>
+  ggplot(aes(x = end_year, y = I_mw, colour = bank, group = bank)) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 2) +
+  geom_hline(yintercept = 100, linetype = "dashed", color = "grey50") +
+  scale_x_continuous(breaks = 2016:2022) +
+  labs(
+    title = "CAMEL Index Trends: Selected Ghanaian Banks",
+    subtitle = "Year-on-year composite indices (base = 100 for each period)",
+    x = "Year",
+    y = "Composite Index (I_mw)",
+    colour = "Bank"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(face = "bold", size = 14)
+  )
+```
+
+### Industry-Wide Trend
+
+Compute the mean index across all banks for each period to assess overall sector health:
+
+```{r}
+# Industry mean index by period
+industry_trend <- trend_long |>
+  group_by(end_year) |>
+  summarise(
+    mean_I_mw = mean(I_mw, na.rm = TRUE),
+    sd_I_mw = sd(I_mw, na.rm = TRUE),
+    n_banks = n(),
+    .groups = "drop"
+  )
+
+industry_trend
+
+# Plot industry trend with confidence band
+industry_trend |>
+  ggplot(aes(x = end_year, y = mean_I_mw)) +
+  geom_ribbon(
+    aes(ymin = mean_I_mw - sd_I_mw, ymax = mean_I_mw + sd_I_mw),
+    fill = "steelblue", alpha = 0.2
+  ) +
+  geom_line(colour = "steelblue", linewidth = 1) +
+  geom_point(colour = "steelblue", size = 2.5) +
+  geom_hline(yintercept = 100, linetype = "dashed", colour = "grey50") +
+  scale_x_continuous(breaks = 2016:2022) +
+  labs(
+    title = "Industry-Wide CAMEL Index Trend",
+    subtitle = "Mean composite index across all banks ± 1 SD",
+    x = "Year",
+    y = "Mean Composite Index (I_mw)"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 14))
+```
+
+### Identifying Consistent Performers
+
+Find banks that improved consistently (index > 100 in most periods):
+
+```{r}
+# Count how many periods each bank improved
+trend_summary <- trend_long |>
+  group_by(bank) |>
+  summarise(
+    periods_above_100 = sum(I_mw > 100, na.rm = TRUE),
+    total_periods = sum(!is.na(I_mw)),
+    mean_I_mw = mean(I_mw, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    improvement_rate = round(periods_above_100 / total_periods * 100, 1)
+  ) |>
+  arrange(desc(improvement_rate), desc(mean_I_mw))
+
+trend_summary
+```
+
+
 ## Methodology
 
 The index computation follows these steps:

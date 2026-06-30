@@ -100,6 +100,27 @@ plot_camel_index(result, highlight_banks = c("Absa", "Ecobank", "GCB"))
 | `summary.camel_index()`  | Detailed summary of factor analysis      |
 | `autoplot.camel_index()` | ggplot2 autoplot method                  |
 
+## Interactive Shiny Dashboard
+
+For a graphical interface to the package, launch the included Shiny
+dashboard **NB**: The dashboard is currently only available in the
+development version. It will be made available on CRAN in the next cran
+release.
+
+``` r
+launch_dashboard()
+```
+
+The dashboard provides: - **Upload interface** for custom CSV data -
+**Real-time computation** with adjustable parameters - **Rich
+visualisations**: line plots, bar charts, radar charts, histograms,
+lollipop charts - **Interactive tables** with colour-coded performance
+indicators - **Downloadable results** in CSV, Excel, and RDS formats -
+**Factor analysis explorer** with eigenvalues, weights, and loadings
+
+![Dashboard Screenshot 1](man/figures/dashboard-1.png) ![Dashboard
+Screenshot 2](man/figures/dashboard-2.png)
+
 ## Contributing
 
 Contributions are welcome! Please see
