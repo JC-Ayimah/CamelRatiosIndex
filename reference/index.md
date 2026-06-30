@@ -22,6 +22,11 @@ Methods for camel_index objects
   [`autoplot(`*`<camel_index>`*`)`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/plot_camel_index.md)
   : Plot CAMEL Index Percentage Differences
 
+## Interactive Dashboard
+
+- [`launch_dashboard()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/launch_dashboard.md)
+  : Launch the CamelRatiosIndex Shiny Dashboard
+
 ## Datasets
 
 Example data from Ghanaian banks

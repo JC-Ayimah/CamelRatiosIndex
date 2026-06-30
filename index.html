@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">CamelRatiosIndex</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +42,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/introduction.html">Introduction to CamelRatiosIndex</a></li>
+    <li><a class="dropdown-item" href="articles/shiny-dashboard.html">Interactive Shiny Dashboard</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -212,6 +213,15 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section level2">
+<h2 id="interactive-shiny-dashboard">Interactive Shiny Dashboard<a class="anchor" aria-label="anchor" href="#interactive-shiny-dashboard"></a>
+</h2>
+<p>For a graphical interface to the package, launch the included Shiny dashboard <strong>NB</strong>: The dashboard is currently only available in the development version. It will be made available on CRAN in the next cran release.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/launch_dashboard.html">launch_dashboard</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>The dashboard provides: - <strong>Upload interface</strong> for custom CSV data - <strong>Real-time computation</strong> with adjustable parameters - <strong>Rich visualisations</strong>: line plots, bar charts, radar charts, histograms, lollipop charts - <strong>Interactive tables</strong> with colour-coded performance indicators - <strong>Downloadable results</strong> in CSV, Excel, and RDS formats - <strong>Factor analysis explorer</strong> with eigenvalues, weights, and loadings</p>
+<p><img src="reference/figures/dashboard-1.png" alt="Dashboard Screenshot 1"><img src="reference/figures/dashboard-2.png" alt="Dashboard Screenshot 2"></p>
 </div>
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>

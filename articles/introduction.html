@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CamelRatiosIndex</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/introduction.html">Introduction to CamelRatiosIndex</a></li>
+    <li><a class="dropdown-item" href="../articles/shiny-dashboard.html">Interactive Shiny Dashboard</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -376,6 +377,202 @@ communality weights.</li>
 robust factor analysis, representing the proportion of variance
 explained by each CAMEL ratio.</li>
 </ul>
+</div>
+</div>
+<div class="section level2">
+<h2 id="trend-analysis-year-on-year-comparison">Trend Analysis: Year-on-Year Comparison<a class="anchor" aria-label="anchor" href="#trend-analysis-year-on-year-comparison"></a>
+</h2>
+<p>The package supports trend analysis by computing indices for
+successive pairs of years. This allows you to track bank performance
+trajectories over multiple periods and identify emerging patterns that a
+single comparison might miss.</p>
+<div class="section level3">
+<h3 id="computing-year-on-year-indices">Computing Year-on-Year Indices<a class="anchor" aria-label="anchor" href="#computing-year-on-year-indices"></a>
+</h3>
+<p>The package includes built-in datasets for eight years (2015-2022).
+To build a trend, compute the index for each consecutive year pair,
+using the earlier year as the base:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Compute year-on-year indices</span></span>
+<span><span class="va">yoy_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  <span class="st">"2015-2016"</span> <span class="op">=</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">camel_2015</span>, <span class="va">camel_2016</span>, n_factors <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  <span class="st">"2016-2017"</span> <span class="op">=</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">camel_2016</span>, <span class="va">camel_2017</span>, n_factors <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  <span class="st">"2017-2018"</span> <span class="op">=</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">camel_2017</span>, <span class="va">camel_2018</span>, n_factors <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  <span class="st">"2018-2019"</span> <span class="op">=</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">camel_2018</span>, <span class="va">camel_2019</span>, n_factors <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  <span class="st">"2019-2020"</span> <span class="op">=</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">camel_2019</span>, <span class="va">camel_2020</span>, n_factors <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  <span class="st">"2020-2021"</span> <span class="op">=</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">camel_2020</span>, <span class="va">camel_2021</span><span class="op">)</span>,</span>
+<span>  <span class="st">"2021-2022"</span> <span class="op">=</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">camel_2021</span>, <span class="va">camel_2022</span>, n_factors <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="extracting-trend-data">Extracting Trend Data<a class="anchor" aria-label="anchor" href="#extracting-trend-data"></a>
+</h3>
+<p>Extract the index values for each bank across all periods:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Build a trend table: one row per bank, one column per year-pair</span></span>
+<span><span class="va">trend_data</span> <span class="op">&lt;-</span> <span class="va">yoy_results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">imap</a></span><span class="op">(</span>\<span class="op">(</span><span class="va">data</span>, <span class="va">period</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">data</span><span class="op">$</span><span class="va">index_table</span> <span class="op">|&gt;</span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">bank</span>, <span class="op">!</span><span class="op">!</span><span class="va">period</span> <span class="op">:=</span> <span class="va">I_mw</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/reduce.html" class="external-link">reduce</a></span><span class="op">(</span><span class="va">full_join</span>, by <span class="op">=</span> <span class="st">"bank"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View the trend table</span></span>
+<span><span class="va">trend_data</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 21 × 8</span></span></span>
+<span><span class="co">#&gt;    bank  `2015-2016` `2016-2017` `2017-2018` `2018-2019` `2019-2020` `2020-2021`</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Absa        107.        110.        121.        94.8        103.        102. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> AB          170.         99.2       148.        87.0        158.        105. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ADB         112.         94.4       123.       111.          93.4       102. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> BA          108.         87.0       113.       131.         226.         65.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> CB           82.8       358.        104.        84.8        235.        307. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Ecob…       105.         95.5       108.       199.         105.        463. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> FBN         354.        123.         99.3      310.         149.         85.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> FB          374.        235.         80.7      338.          81.9       192. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> FAB         159.         95.7       106.         4.09       308.        117. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> FNB          81.9       270.         94.9      204.          69.1        24.5</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: `2021-2022` &lt;dbl&gt;</span></span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="visualizing-trends">Visualizing Trends<a class="anchor" aria-label="anchor" href="#visualizing-trends"></a>
+</h3>
+<p>Plot the trajectory of a specific bank over time:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Reshape for ggplot2</span></span>
+<span><span class="va">trend_long</span> <span class="op">&lt;-</span> <span class="va">trend_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="op">-</span><span class="va">bank</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="st">"period"</span>,</span>
+<span>    values_to <span class="op">=</span> <span class="st">"I_mw"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    end_year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">".*-"</span>, <span class="st">""</span>, <span class="va">period</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot trends for selected banks</span></span>
+<span><span class="va">selected_banks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Absa"</span>, <span class="st">"Ecobank"</span>, <span class="st">"GCB"</span>, <span class="st">"ADB"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">trend_long</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">bank</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">selected_banks</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">end_year</span>, y <span class="op">=</span> <span class="va">I_mw</span>, colour <span class="op">=</span> <span class="va">bank</span>, group <span class="op">=</span> <span class="va">bank</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">100</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>, color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">2016</span><span class="op">:</span><span class="fl">2022</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"CAMEL Index Trends: Selected Ghanaian Banks"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Year-on-year composite indices (base = 100 for each period)"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Composite Index (I_mw)"</span>,</span>
+<span>    colour <span class="op">=</span> <span class="st">"Bank"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="introduction_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="864"></p>
+</div>
+<div class="section level3">
+<h3 id="industry-wide-trend">Industry-Wide Trend<a class="anchor" aria-label="anchor" href="#industry-wide-trend"></a>
+</h3>
+<p>Compute the mean index across all banks for each period to assess
+overall sector health:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Industry mean index by period</span></span>
+<span><span class="va">industry_trend</span> <span class="op">&lt;-</span> <span class="va">trend_long</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">end_year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>    mean_I_mw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">I_mw</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    sd_I_mw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">I_mw</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    n_banks <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">industry_trend</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 4</span></span></span>
+<span><span class="co">#&gt;   end_year mean_I_mw sd_I_mw n_banks</span></span>
+<span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     <span style="text-decoration: underline;">2</span>016      140.    81.6      21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     <span style="text-decoration: underline;">2</span>017      150.    84.4      21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     <span style="text-decoration: underline;">2</span>018      104.    23.8      21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     <span style="text-decoration: underline;">2</span>019      131.    76.4      21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     <span style="text-decoration: underline;">2</span>020      161.   134.       21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     <span style="text-decoration: underline;">2</span>021      137.   107.       21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>     <span style="text-decoration: underline;">2</span>022      188.   362.       21</span></span>
+<span></span>
+<span><span class="co"># Plot industry trend with confidence band</span></span>
+<span><span class="va">industry_trend</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">end_year</span>, y <span class="op">=</span> <span class="va">mean_I_mw</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html" class="external-link">geom_ribbon</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">mean_I_mw</span> <span class="op">-</span> <span class="va">sd_I_mw</span>, ymax <span class="op">=</span> <span class="va">mean_I_mw</span> <span class="op">+</span> <span class="va">sd_I_mw</span><span class="op">)</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"steelblue"</span>, alpha <span class="op">=</span> <span class="fl">0.2</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"steelblue"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"steelblue"</span>, size <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">100</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>, colour <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">2016</span><span class="op">:</span><span class="fl">2022</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Industry-Wide CAMEL Index Trend"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Mean composite index across all banks ± 1 SD"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Mean Composite Index (I_mw)"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="introduction_files/figure-html/unnamed-chunk-11-1.png" class="r-plt" alt="" width="864"></p>
+</div>
+<div class="section level3">
+<h3 id="identifying-consistent-performers">Identifying Consistent Performers<a class="anchor" aria-label="anchor" href="#identifying-consistent-performers"></a>
+</h3>
+<p>Find banks that improved consistently (index &gt; 100 in most
+periods):</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Count how many periods each bank improved</span></span>
+<span><span class="va">trend_summary</span> <span class="op">&lt;-</span> <span class="va">trend_long</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">bank</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>    periods_above_100 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">I_mw</span> <span class="op">&gt;</span> <span class="fl">100</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    total_periods <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">I_mw</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    mean_I_mw <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">I_mw</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    improvement_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">periods_above_100</span> <span class="op">/</span> <span class="va">total_periods</span> <span class="op">*</span> <span class="fl">100</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">improvement_rate</span><span class="op">)</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">mean_I_mw</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">trend_summary</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 21 × 5</span></span></span>
+<span><span class="co">#&gt;    bank    periods_above_100 total_periods mean_I_mw improvement_rate</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Ecobank                 6             7      170.             85.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> UBA                     6             7      114.             85.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> FBN                     5             7      176.             71.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> AB                      5             7      140.             71.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> BA                      5             7      132.             71.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> FAB                     5             7      128.             71.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Zenith                  5             7      112.             71.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ADB                     5             7      111.             71.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Absa                    5             7      104.             71.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> GTB                     4             7      203.             57.1</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more rows</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

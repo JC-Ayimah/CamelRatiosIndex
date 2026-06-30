@@ -2,26 +2,14 @@
 
 ## CamelRatiosIndex (development version)
 
-## CamelRatiosIndex 1.0.0
+### CamelRatiosIndex 1.1.0.9000
 
-CRAN release: 2026-06-20
-
-### CamelRatiosIndex 0.1.0
-
-- Initial CRAN release.
-- Added
-  [`camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/camel_index.md)
-  for computing multivariate-weighted CAMEL indices.
-- Added
-  [`plot_camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/plot_camel_index.md)
-  for ggplot2-based visualization.
-- Added
-  [`print.camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/print.camel_index.md)
-  and
-  [`summary.camel_index()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/summary.camel_index.md)
-  methods.
-- Added built-in datasets `camel_2015`, `camel_2016`, `camel_2017`,
-  `camel_2018`, `camel_2019`, `camel_2020`, `camel_2021` and
-  `camel_2022`.
-- Set up CI/CD with GitHub Actions.
-- Added package website with pkgdown.
+- Added Interactive shiny dashboard
+  ([`launch_dashboard()`](https://JC-Ayimah.github.io/CamelRatiosIndex/reference/launch_dashboard.md))
+  for non programmatic users.
+- Added export functionalities within dashboard: download index tables
+  as CSV, Factor Analysis and Data Explorer
+- Added examples on how to perform year-on-year trend analysis in
+  vignette
+- Enhanced visualisation options in the dashboard using `plotly` for
+  interactive charts (zoom, pan, tooltips)

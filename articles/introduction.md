@@ -278,6 +278,212 @@ summary(result)
   analysis, representing the proportion of variance explained by each
   CAMEL ratio.
 
+## Trend Analysis: Year-on-Year Comparison
+
+The package supports trend analysis by computing indices for successive
+pairs of years. This allows you to track bank performance trajectories
+over multiple periods and identify emerging patterns that a single
+comparison might miss.
+
+### Computing Year-on-Year Indices
+
+The package includes built-in datasets for eight years (2015-2022). To
+build a trend, compute the index for each consecutive year pair, using
+the earlier year as the base:
+
+``` r
+
+# Compute year-on-year indices
+yoy_results <- list(
+  "2015-2016" = camel_index(camel_2015, camel_2016, n_factors = 2),
+  "2016-2017" = camel_index(camel_2016, camel_2017, n_factors = 2),
+  "2017-2018" = camel_index(camel_2017, camel_2018, n_factors = 2),
+  "2018-2019" = camel_index(camel_2018, camel_2019, n_factors = 2),
+  "2019-2020" = camel_index(camel_2019, camel_2020, n_factors = 2),
+  "2020-2021" = camel_index(camel_2020, camel_2021),
+  "2021-2022" = camel_index(camel_2021, camel_2022, n_factors = 2)
+)
+```
+
+### Extracting Trend Data
+
+Extract the index values for each bank across all periods:
+
+``` r
+
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+library(purrr)
+
+# Build a trend table: one row per bank, one column per year-pair
+trend_data <- yoy_results |>
+  imap(\(data, period) {
+    data$index_table |>
+      select(bank, !!period := I_mw)
+  }) |>
+  reduce(full_join, by = "bank")
+
+# View the trend table
+trend_data
+#> # A tibble: 21 × 8
+#>    bank  `2015-2016` `2016-2017` `2017-2018` `2018-2019` `2019-2020` `2020-2021`
+#>    <chr>       <dbl>       <dbl>       <dbl>       <dbl>       <dbl>       <dbl>
+#>  1 Absa        107.        110.        121.        94.8        103.        102. 
+#>  2 AB          170.         99.2       148.        87.0        158.        105. 
+#>  3 ADB         112.         94.4       123.       111.          93.4       102. 
+#>  4 BA          108.         87.0       113.       131.         226.         65.6
+#>  5 CB           82.8       358.        104.        84.8        235.        307. 
+#>  6 Ecob…       105.         95.5       108.       199.         105.        463. 
+#>  7 FBN         354.        123.         99.3      310.         149.         85.6
+#>  8 FB          374.        235.         80.7      338.          81.9       192. 
+#>  9 FAB         159.         95.7       106.         4.09       308.        117. 
+#> 10 FNB          81.9       270.         94.9      204.          69.1        24.5
+#> # ℹ 11 more rows
+#> # ℹ 1 more variable: `2021-2022` <dbl>
+```
+
+### Visualizing Trends
+
+Plot the trajectory of a specific bank over time:
+
+``` r
+
+library(ggplot2)
+library(tidyr)
+
+# Reshape for ggplot2
+trend_long <- trend_data |>
+  pivot_longer(
+    cols = -bank,
+    names_to = "period",
+    values_to = "I_mw"
+  ) |>
+  mutate(
+    end_year = as.numeric(gsub(".*-", "", period))
+  )
+
+# Plot trends for selected banks
+selected_banks <- c("Absa", "Ecobank", "GCB", "ADB")
+
+trend_long |>
+  filter(bank %in% selected_banks) |>
+  ggplot(aes(x = end_year, y = I_mw, colour = bank, group = bank)) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 2) +
+  geom_hline(yintercept = 100, linetype = "dashed", color = "grey50") +
+  scale_x_continuous(breaks = 2016:2022) +
+  labs(
+    title = "CAMEL Index Trends: Selected Ghanaian Banks",
+    subtitle = "Year-on-year composite indices (base = 100 for each period)",
+    x = "Year",
+    y = "Composite Index (I_mw)",
+    colour = "Bank"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(face = "bold", size = 14)
+  )
+```
+
+![](introduction_files/figure-html/unnamed-chunk-10-1.png)
+
+### Industry-Wide Trend
+
+Compute the mean index across all banks for each period to assess
+overall sector health:
+
+``` r
+
+# Industry mean index by period
+industry_trend <- trend_long |>
+  group_by(end_year) |>
+  summarise(
+    mean_I_mw = mean(I_mw, na.rm = TRUE),
+    sd_I_mw = sd(I_mw, na.rm = TRUE),
+    n_banks = n(),
+    .groups = "drop"
+  )
+
+industry_trend
+#> # A tibble: 7 × 4
+#>   end_year mean_I_mw sd_I_mw n_banks
+#>      <dbl>     <dbl>   <dbl>   <int>
+#> 1     2016      140.    81.6      21
+#> 2     2017      150.    84.4      21
+#> 3     2018      104.    23.8      21
+#> 4     2019      131.    76.4      21
+#> 5     2020      161.   134.       21
+#> 6     2021      137.   107.       21
+#> 7     2022      188.   362.       21
+
+# Plot industry trend with confidence band
+industry_trend |>
+  ggplot(aes(x = end_year, y = mean_I_mw)) +
+  geom_ribbon(
+    aes(ymin = mean_I_mw - sd_I_mw, ymax = mean_I_mw + sd_I_mw),
+    fill = "steelblue", alpha = 0.2
+  ) +
+  geom_line(colour = "steelblue", linewidth = 1) +
+  geom_point(colour = "steelblue", size = 2.5) +
+  geom_hline(yintercept = 100, linetype = "dashed", colour = "grey50") +
+  scale_x_continuous(breaks = 2016:2022) +
+  labs(
+    title = "Industry-Wide CAMEL Index Trend",
+    subtitle = "Mean composite index across all banks ± 1 SD",
+    x = "Year",
+    y = "Mean Composite Index (I_mw)"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 14))
+```
+
+![](introduction_files/figure-html/unnamed-chunk-11-1.png)
+
+### Identifying Consistent Performers
+
+Find banks that improved consistently (index \> 100 in most periods):
+
+``` r
+
+# Count how many periods each bank improved
+trend_summary <- trend_long |>
+  group_by(bank) |>
+  summarise(
+    periods_above_100 = sum(I_mw > 100, na.rm = TRUE),
+    total_periods = sum(!is.na(I_mw)),
+    mean_I_mw = mean(I_mw, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    improvement_rate = round(periods_above_100 / total_periods * 100, 1)
+  ) |>
+  arrange(desc(improvement_rate), desc(mean_I_mw))
+
+trend_summary
+#> # A tibble: 21 × 5
+#>    bank    periods_above_100 total_periods mean_I_mw improvement_rate
+#>    <chr>               <int>         <int>     <dbl>            <dbl>
+#>  1 Ecobank                 6             7      170.             85.7
+#>  2 UBA                     6             7      114.             85.7
+#>  3 FBN                     5             7      176.             71.4
+#>  4 AB                      5             7      140.             71.4
+#>  5 BA                      5             7      132.             71.4
+#>  6 FAB                     5             7      128.             71.4
+#>  7 Zenith                  5             7      112.             71.4
+#>  8 ADB                     5             7      111.             71.4
+#>  9 Absa                    5             7      104.             71.4
+#> 10 GTB                     4             7      203.             57.1
+#> # ℹ 11 more rows
+```
+
 ## Methodology
 
 The index computation follows these steps:
