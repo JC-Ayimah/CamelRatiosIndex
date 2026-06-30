@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/JC-Ayimah/CamelRatiosIndex/blob/v1.0.0/inst/CITATION)
+[`inst/CITATION`](https://github.com/JC-Ayimah/CamelRatiosIndex/blob/master/inst/CITATION)
 
 Ayimah J, Agyen G, Achiyaale R (2026). *CamelRatiosIndex:
 Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
