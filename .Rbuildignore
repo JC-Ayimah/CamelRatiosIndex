@@ -31,4 +31,8 @@
 ^\.circleci$
 ^\.gitlab-ci\.yml$
 ^CONTRIBUTING\.md$
+<<<<<<< HEAD
+^dev$
+=======
 ^CRAN-SUBMISSION$
+>>>>>>> c5e608db37f7f96385404e3892f7403508127262
