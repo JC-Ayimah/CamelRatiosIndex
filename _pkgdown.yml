@@ -24,6 +24,9 @@ reference:
       - print.camel_index
       - summary.camel_index
       - autoplot.camel_index
+  - title: "Interactive Dashboard"
+    contents:
+      - launch_dashboard
   - title: "Datasets"
     desc: "Example data from Ghanaian banks"
     contents:

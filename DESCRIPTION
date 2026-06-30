@@ -1,6 +1,6 @@
 Package: CamelRatiosIndex
 Title: Multivariate-Weighted Indexing of CAMEL Ratios for Bank Performance
-Version: 0.1.0
+Version: 1.1.0.9000
 Authors@R: c(
     person("John Coker", "Ayimah", , "jayimah@htu.edu.gh", role = c("aut", "cph", "cre")),
     person("George Kyei", "Agyen", , "gkagyen@live.com", role = c("aut", "cph")),
