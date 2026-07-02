@@ -186,7 +186,7 @@ trend_data
 
 Plot the trajectory of a specific bank over time:
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(tidyr)
 
