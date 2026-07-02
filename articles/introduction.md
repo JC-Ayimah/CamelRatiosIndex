@@ -37,9 +37,12 @@ performance, comprising five dimensions:
 
 ``` r
 
+# Install official release from CRAN
+install.packages("CamelRatiosIndex")
+
 # Install from GitHub (development version)
 # install.packages("remotes")
-remotes::install_github("YOUR-USERNAME/CamelRatiosIndex")
+remotes::install_github("JC-Ayimah/CamelRatiosIndex")
 ```
 
 ## Quick Start
@@ -56,7 +59,6 @@ data("camel_2022")
 
 # Compute the index
 result <- camel_index(camel_2015, camel_2022)
-#> ℹ Using 3 factors (Kaiser criterion suggests 2 for base year).
 
 # View the main output
 result$index_table
@@ -170,7 +172,6 @@ curr_mat <- as.matrix(camel_2022[, -1])
 banks <- camel_2015$Bank
 
 result2 <- camel_index(base_mat, curr_mat, bank_names = banks)
-#> ℹ Using 3 factors (Kaiser criterion suggests 2 for base year).
 ```
 
 ## Understanding the Output
@@ -183,14 +184,6 @@ function returns a rich object with multiple components:
 
 # Print overview
 print(result)
-#> 
-#> ── CAMEL Index Results ─────────────────────────────────────────────────────────
-#> Base year factor analysis: 2 eigenvalue(s) > 1
-#> Current year factor analysis: 2 eigenvalue(s) > 1
-#> Factors extracted: 3
-#> 
-#> ── Index Table ──
-#> 
 #> # A tibble: 21 × 3
 #>    bank      I_mw      PD
 #>    <chr>    <dbl>   <dbl>
@@ -205,7 +198,6 @@ print(result)
 #>  9 FAB     204.   104.   
 #> 10 FNB     144.    43.7  
 #> # ℹ 11 more rows
-#> ── Communality Weights (Base Year) ──
 #> # A tibble: 5 × 2
 #>   ratio  weight
 #>   <chr>   <dbl>
@@ -214,19 +206,9 @@ print(result)
 #> 3 Ratio3  0.885
 #> 4 Ratio4  0.894
 #> 5 Ratio5  0.827
-#> ── Summary Statistics ──
-#> Mean I_mw: 160.05
-#> Mean PD: 60.05%
-#> Best performing bank: Ecobank (PD = 448.77%)
-#> Worst performing bank: CB (PD = -96.28%)
 
 # Detailed summary
 summary(result)
-#> 
-#> ── CAMEL Index Summary ─────────────────────────────────────────────────────────
-#> 
-#> ── Eigenvalues (Base Year) ──
-#> 
 #> # A tibble: 5 × 3
 #>   component eigenvalue variance_pct
 #>   <chr>          <dbl>        <dbl>
@@ -235,7 +217,6 @@ summary(result)
 #> 3 PC3            0.966        19.3 
 #> 4 PC4            0.324         6.48
 #> 5 PC5            0.291         5.83
-#> ── Eigenvalues (Current Year) ──
 #> # A tibble: 5 × 3
 #>   component eigenvalue variance_pct
 #>   <chr>          <dbl>        <dbl>
@@ -244,7 +225,6 @@ summary(result)
 #> 3 PC3            0.788        15.8 
 #> 4 PC4            0.524        10.5 
 #> 5 PC5            0.199         3.97
-#> ── Factor Loadings (Base Year) ──
 #> # A tibble: 5 × 4
 #>   ratio   Factor1  Factor2 Factor3
 #>   <chr>     <dbl>    <dbl>   <dbl>
@@ -253,7 +233,6 @@ summary(result)
 #> 3 Ratio3 -0.162    0.920     0.114
 #> 4 Ratio4 -0.00290  0.0102    0.946
 #> 5 Ratio5 -0.469   -0.762     0.160
-#> ── Index Distribution ──
 #> # A tibble: 7 × 3
 #>   statistic   I_mw      PD
 #>   <chr>      <dbl>   <dbl>
@@ -312,14 +291,6 @@ Extract the index values for each bank across all periods:
 ``` r
 
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(purrr)
 
 # Build a trend table: one row per bank, one column per year-pair

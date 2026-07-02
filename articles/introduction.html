@@ -144,9 +144,12 @@ performance, comprising five dimensions:</p>
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install from GitHub (development version)</span></span>
+<code class="sourceCode R"><span><span class="co"># Install official release from CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CamelRatiosIndex"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Install from GitHub (development version)</span></span>
 <span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"YOUR-USERNAME/CamelRatiosIndex"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JC-Ayimah/CamelRatiosIndex"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -163,7 +166,6 @@ performance, comprising five dimensions:</p>
 <span></span>
 <span><span class="co"># Compute the index</span></span>
 <span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">camel_2015</span>, <span class="va">camel_2022</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Using 3 factors (Kaiser criterion suggests 2 for base year).</span></span>
 <span></span>
 <span><span class="co"># View the main output</span></span>
 <span><span class="va">result</span><span class="op">$</span><span class="va">index_table</span></span>
@@ -263,8 +265,7 @@ followed by the five CAMEL ratios:</p>
 <span><span class="va">curr_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">camel_2022</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">banks</span> <span class="op">&lt;-</span> <span class="va">camel_2015</span><span class="op">$</span><span class="va">Bank</span></span>
 <span></span>
-<span><span class="va">result2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">base_mat</span>, <span class="va">curr_mat</span>, bank_names <span class="op">=</span> <span class="va">banks</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Using 3 factors (Kaiser criterion suggests 2 for base year).</span></span></code></pre></div>
+<span><span class="va">result2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/camel_index.html">camel_index</a></span><span class="op">(</span><span class="va">base_mat</span>, <span class="va">curr_mat</span>, bank_names <span class="op">=</span> <span class="va">banks</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -275,14 +276,6 @@ multiple components:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Print overview</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">CAMEL Index Results</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; Base year factor analysis: 2 eigenvalue(s) &gt; 1</span></span>
-<span><span class="co">#&gt; Current year factor analysis: 2 eigenvalue(s) &gt; 1</span></span>
-<span><span class="co">#&gt; Factors extracted: 3</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Index Table</span> ──</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 21 × 3</span></span></span>
 <span><span class="co">#&gt;    bank      I_mw      PD</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -297,7 +290,6 @@ multiple components:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> FAB     204.   104.   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> FNB     144.    43.7  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more rows</span></span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Communality Weights (Base Year)</span> ──</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 2</span></span></span>
 <span><span class="co">#&gt;   ratio  weight</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -306,19 +298,9 @@ multiple components:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Ratio3  0.885</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Ratio4  0.894</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Ratio5  0.827</span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Summary Statistics</span> ──</span></span>
-<span><span class="co">#&gt; Mean I_mw: 160.05</span></span>
-<span><span class="co">#&gt; Mean PD: 60.05%</span></span>
-<span><span class="co">#&gt; Best performing bank: Ecobank (PD = 448.77%)</span></span>
-<span><span class="co">#&gt; Worst performing bank: CB (PD = -96.28%)</span></span>
 <span></span>
 <span><span class="co"># Detailed summary</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">CAMEL Index Summary</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Eigenvalues (Base Year)</span> ──</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
 <span><span class="co">#&gt;   component eigenvalue variance_pct</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -327,7 +309,6 @@ multiple components:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> PC3            0.966        19.3 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> PC4            0.324         6.48</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> PC5            0.291         5.83</span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Eigenvalues (Current Year)</span> ──</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
 <span><span class="co">#&gt;   component eigenvalue variance_pct</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -336,7 +317,6 @@ multiple components:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> PC3            0.788        15.8 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> PC4            0.524        10.5 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> PC5            0.199         3.97</span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Factor Loadings (Base Year)</span> ──</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
 <span><span class="co">#&gt;   ratio   Factor1  Factor2 Factor3</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -345,7 +325,6 @@ multiple components:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Ratio3 -<span style="color: #BB0000;">0.162</span>    0.920     0.114</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Ratio4 -<span style="color: #BB0000;">0.002</span><span style="color: #BB0000; text-decoration: underline;">90</span>  0.010<span style="text-decoration: underline;">2</span>    0.946</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Ratio5 -<span style="color: #BB0000;">0.469</span>   -<span style="color: #BB0000;">0.762</span>     0.160</span></span>
-<span><span class="co">#&gt; ── <span style="font-weight: bold;">Index Distribution</span> ──</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 3</span></span></span>
 <span><span class="co">#&gt;   statistic   I_mw      PD</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -410,14 +389,6 @@ using the earlier year as the base:</p>
 <p>Extract the index values for each bank across all periods:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     filter, lag</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Build a trend table: one row per bank, one column per year-pair</span></span>
