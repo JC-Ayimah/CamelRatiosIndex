@@ -10,6 +10,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  message = FALSE,
   comment = "#>",
   fig.width = 9,
   fig.height = 6
@@ -41,9 +42,12 @@ CAMEL is an internationally recognized framework for evaluating bank performance
 ## Installation
 
 ```r
+# Install official release from CRAN
+install.packages("CamelRatiosIndex")
+
 # Install from GitHub (development version)
 # install.packages("remotes")
-remotes::install_github("YOUR-USERNAME/CamelRatiosIndex")
+remotes::install_github("JC-Ayimah/CamelRatiosIndex")
 ```
 
 ## Quick Start
@@ -186,7 +190,7 @@ trend_data
 
 Plot the trajectory of a specific bank over time:
 
-```{r, message=FALSE, warning=FALSE}
+```{r}
 library(ggplot2)
 library(tidyr)
 
